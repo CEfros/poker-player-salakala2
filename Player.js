@@ -9,6 +9,7 @@ class Player {
   }
 
   static showdown(gameState) {
+    console.log('showdown gameState', gameState);
   }
 }
 
