@@ -28,7 +28,7 @@ class Player {
       console.log('made to bet call');
       bet(amount || 0);
     } catch (e) {
-      console.log('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX');
+      console.log('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX', e);
       bet(0);
     }
   }
