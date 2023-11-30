@@ -39,7 +39,7 @@ function hasTwoPair(holeCards) {
 }
 
 function hasTriple(holeCards) {
-    console.log('checking if has two pairs');
+    console.log('checking if has triple');
     const cardRanks = holeCards.map(card => card.rank);
     console.log('cardRanks: ', cardRanks);
 
@@ -144,7 +144,6 @@ module.exports = {
   hasTriple,
   hasTwoPair,
   hasStraight,
-  hasFourOfAKind,
   hasFlush,
   hasFourOfAKind,
   hasFullHouse,
