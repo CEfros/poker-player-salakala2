@@ -1,8 +1,8 @@
-function getPlayer(gameState) {
+export function getPlayer(gameState) {
   return gameState.players.find(el => el.hole_cards);
 }
 
-function isPairCards(gameState) {
+export function isPairCards(gameState) {
     const player = getPlayer(gameState);
     return player.hole_cards[0] === player.hole_cards[1];
 }
