@@ -116,6 +116,29 @@ function hasFullHouse(holeCards) {
     return hasPair(holeCards) && hasTriple(holeCards);
 }
 
+function hasStrongestPair(holeCards, communityCards) {
+    const allCards = [...holeCards, ...communityCards];
+    const cardRanks = allCards.map(card => card.rank);
+
+    // Count the occurrences of each rank
+    const rankCounts = {};
+    for (const rank of cardRanks) {
+        rankCounts[rank] = (rankCounts[rank] || 0) + 1;
+    }
+
+    // Find the highest-ranked pair
+    let strongestPairRank = null;
+    for (const rank in rankCounts) {
+        if (rankCounts[rank] === 2 && (!strongestPairRank || rank > strongestPairRank)) {
+            strongestPairRank = rank;
+        }
+    }
+
+    // Check if you have the strongest pair
+    const yourPairRank = holeCards.some(card => card.rank === strongestPairRank);
+    return yourPairRank;
+}
+
 module.exports = {
   hasPair,
   hasTriple,
@@ -125,4 +148,5 @@ module.exports = {
   hasFlush,
   hasFourOfAKind,
   hasFullHouse,
+  hasStrongestPair,
 };

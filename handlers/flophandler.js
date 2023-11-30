@@ -6,6 +6,7 @@ const {
   hasFlush,
   hasFourOfAKind,
   hasFullHouse,
+  hasStrongestPair,
 } = require('../helpers/hand-analyser');
 
 function getAllCards(gameState) {
@@ -30,7 +31,11 @@ function handleFlop (gameState) {
     return doBet(4, player);
   }
 
-  if (hasPair(allCards)) {
+  if (hasStrongestPair(player.hole_cards, gameState.community_cards)) {
+    return doBet(4, player, gameState);
+  } else if (hasPair(gameState) && !isBetHigherInSBs(gameState, 5)) {
+    return doBet(3, player, gameState);
+  } else if (hasPair(allCards)) {
     return doBet(4, player, gameState);
   } else if (hasTwoPair(allCards)) {
     return doBet(6, player, gameState);
@@ -48,6 +53,13 @@ function handleFlop (gameState) {
   return 0;
 }
 
+function isBetHigherInSBs(gameState, smallBlinds) {
+  if (gameState.current_buy_in > gameState.small_blind * smallBlinds) {
+    return true;
+  }
+
+  return false;
+}
 
 function getRandomInteger(min, max) {
     // Ensure that min and max are integers
