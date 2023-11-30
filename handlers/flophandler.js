@@ -33,7 +33,7 @@ function handleFlop (gameState) {
 
   if (hasStrongestPair(player.hole_cards, gameState.community_cards)) {
     return doBet(4, player, gameState);
-  } else if (hasPair(gameState) && !isBetHigherInSBs(gameState, 5)) {
+  } else if (hasPair(allCards) && !isBetHigherInSBs(gameState, 5)) {
     return doBet(3, player, gameState);
   } else if (hasPair(allCards)) {
     return doBet(4, player, gameState);
