@@ -43,12 +43,6 @@ class Player {
         amount = 0;
       }
 
-      // check if amount is negative
-      if (amount < 0) {
-        console.log('tried to bet negative bet', amount);
-        amount = 0;
-      }
-
       console.log('made to bet call: ', amount);
 
       bet(amount || 0);
