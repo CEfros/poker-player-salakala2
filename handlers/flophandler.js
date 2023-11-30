@@ -49,8 +49,17 @@ function handleFlop (gameState) {
 }
 
 
+function getRandomInteger(min, max) {
+    // Ensure that min and max are integers
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    // Generate a random integer between min and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function doBet(smallBlindCount = 8, player, gameState) {
-  return gameState.current_buy_in - player.bet + (gameState.small_blind * smallBlindCount);
+  return gameState.current_buy_in - player.bet + (gameState.small_blind * getRandomInteger(smallBlindCount - 2, smallBlindCount));
 }
 
 module.exports = {
