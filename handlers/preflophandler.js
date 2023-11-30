@@ -4,7 +4,7 @@ function getPlayer(gameState) {
 
 function isPairCards(gameState) {
     const player = getPlayer(gameState);
-    return player.hole_cards[0] === player.hole_cards[1];
+    return player.hole_cards[0].rank === player.hole_cards[1].rank;
 }
 
 function hasAceInHand(gameState) {

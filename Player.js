@@ -13,15 +13,6 @@ class Player {
     try {
       console.log('gamestate Sala1: ', gameState);
 
-
-
-      const player = getPlayer(gameState);
-      if (!IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
-        console.log('checking or folding for non good hand');
-        bet(0);
-        return;
-      }
-
       let amount = 0;
       console.log('checking if is preflop');
       if (isPreFlop(gameState)) {
@@ -38,9 +29,23 @@ class Player {
         amount = handleFlop(gameState);
       }
 
+      const player = getPlayer(gameState);
+      if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
+        console.log('all in for okay hand');
+        amount = player.stack;
+        console.log('all in for okay hand no failure');
+      }
+
+
       // check if amount is not a number
       if (isNaN(amount)) {
         console.log('tried to bet nan');
+        amount = 0;
+      }
+
+      // check if amount is negative
+      if (amount < 0) {
+        console.log('tried to bet negative bet', amount);
         amount = 0;
       }
 
