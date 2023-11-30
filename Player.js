@@ -19,6 +19,7 @@ class Player {
         console.log('checked preflop');
         amount = handlePreflop(gameState);
       } else if (isFlop(gameState)) {
+        console.log('check flop');
         amount = handleFlop(gameState);
       }
 
