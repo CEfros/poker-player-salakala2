@@ -30,12 +30,14 @@ class Player {
         console.log('all in for okay hand no failure');
       }
 
-      console.log('made to bet call: ', amount);
 
       // check if amount is not a number
       if (isNaN(amount)) {
+        console.log('tried to bet nan');
         amount = 0;
       }
+
+      console.log('made to bet call: ', amount);
 
       bet(amount || 0);
     } catch (e) {
