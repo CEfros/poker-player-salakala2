@@ -27,4 +27,5 @@ function handlePreflop (gameState) {
 
 module.exports = {
   handlePreflop,
+  getPlayer,
 }
