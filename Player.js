@@ -1,6 +1,6 @@
 const { handlePreflop, getPlayer } = require('./handlers/preflophandler');
 const IsOkayHand = require('./handlers/IsOkayBaseHand');
-const IsNeutralHand = require('./handlers/IsConnectedHand');
+const IsNeutralHand = require('./handlers/IsNeutralHand');
 
 const { handleFlop } = require('./handlers/flophandler');
 const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');

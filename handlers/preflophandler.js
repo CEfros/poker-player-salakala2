@@ -1,5 +1,5 @@
-const IsOkayHand = require('./IsConnectedHand');
-const IsNeutralHand = require('./IsConnectedHand');
+const IsOkayHand = require('./IsOkayBaseHand');
+const IsNeutralHand = require('./IsNeutralHand');
 
 function getPlayer(gameState) {
   return gameState.players.find(el => el.hole_cards);
