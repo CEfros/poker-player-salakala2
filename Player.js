@@ -1,5 +1,6 @@
 const { handlePreflop, getPlayer } = require('./handlers/preflophandler');
 const IsOkayHand = require('./handlers/IsOkayBaseHand');
+const IsNeutralHand = require('./handlers/IsConnectedHand');
 
 const { handleFlop } = require('./handlers/flophandler');
 const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
@@ -7,7 +8,7 @@ const timers = require("timers");
 
 class Player {
   static get VERSION() {
-    return 'v.1.6.3';
+    return 'v.1.7.0';
   }
 
   static betRequest(gameState, bet) {
@@ -20,7 +21,8 @@ class Player {
       console.time('TIMER: isOkayHand');
       if (
         isPreFlop(gameState) &&
-        !IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])
+        !IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1]) ||
+        !IsNeutralHand.isNeutralHand(player.hole_cards[0], player.hole_cards[1])
       ) {
         console.log('checking or folding for non good hand');
 
