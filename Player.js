@@ -40,13 +40,19 @@ class Player {
         console.log('checked preflop success, amount:', amount);
         console.timeEnd('TIMER: handlePreflop');
       } else if (isFlop(gameState)) {
+        console.time('TIMER: isFlop handleFlop');
         console.log('check flop');
         amount = handleFlop(gameState);
         console.log('checked flop success, amount:', amount);
+        console.timeEnd('TIMER: isFlop handleFlop');
       } else if (isTurn(gameState)) {
+        console.time('TIMER: isTurn handleFlop');
         amount = handleFlop(gameState);
+        console.timeEnd('TIMER: isTurn handleFlop');
       } else if (isRiver(gameState)) {
+        console.time('TIMER: isRiver handleFlop');
         amount = handleFlop(gameState);
+        console.timeEnd('TIMER: isRiver handleFlop');
       }
 
       // check if amount is not a number
@@ -68,6 +74,8 @@ class Player {
       bet(amount || 0);
     } catch (e) {
       console.trace('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX', e);
+
+      console.timeEnd('TIMER: whole resptime');
       bet(0);
     }
   }
