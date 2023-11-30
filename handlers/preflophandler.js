@@ -22,9 +22,6 @@ function handlePreflop (gameState) {
     return player.stack;
   } else if (hasAceInHand(gameState)) {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 6);
-
-  } else {
-    return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
 }
 
