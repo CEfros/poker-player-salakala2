@@ -2,7 +2,7 @@ const { handlePreflop, getPlayer } = require('./handlers/preflophandler');
 const IsOkayHand = require('./handlers/IsOkayBaseHand');
 
 const { handleFlop } = require('./handlers/flophandler');
-const { isPreFlop, isFlop } = require('./helpers/bet-request');
+const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
@@ -23,6 +23,10 @@ class Player {
         console.log('check flop');
         amount = handleFlop(gameState);
         console.log('checked flop success, amount:', amount);
+      } else if (isTurn(gameState)) {
+        amount = handleFlop(gameState);
+      } else if (isRiver(gameState)) {
+        amount = handleFlop(gameState);
       }
 
       const player = getPlayer(gameState);
