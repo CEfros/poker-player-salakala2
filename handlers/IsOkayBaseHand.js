@@ -37,6 +37,7 @@ class IsOkayBaseHand {
 
   static isOkayHand(card1, card2) {
     if (this.isSameCard(card1, card2)) {
+      console.log('same ranked cards in hand');
       return true;
     }
 
@@ -64,10 +65,12 @@ class IsOkayBaseHand {
   }
 
   static isSameSuit(card1, card2) {
+    console.log('checking if cards in hand are of same suit');
     return card1.suit === card2.suit;
   }
 
   static isSameCard(card1, card2) {
+    console.log('checking if cards in hand are of same rank');
     return card1.rank === card2.rank;
   }
 }

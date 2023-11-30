@@ -18,7 +18,9 @@ function hasPair(holeCards) {
 }
 
 function hasTwoPair(holeCards) {
+    console.log('checking if has two pairs');
     const cardRanks = holeCards.map(card => card.rank);
+    console.log('cardRanks: ', cardRanks);
 
     // Count the occurrences of each rank
     const rankCounts = {};
@@ -32,7 +34,9 @@ function hasTwoPair(holeCards) {
 }
 
 function hasTriple(holeCards) {
+    console.log('checking if has two pairs');
     const cardRanks = holeCards.map(card => card.rank);
+    console.log('cardRanks: ', cardRanks);
 
     // Count the occurrences of each rank
     const rankCounts = {};
@@ -51,7 +55,9 @@ function hasTriple(holeCards) {
 }
 
 function hasStraight(holeCards) {
+    console.log('checking if has straight');
     const cardRanks = holeCards.map(card => card.rank);
+    console.log('cardRanks: ', cardRanks);
 
     // Convert card ranks to numeric values
     const numericRanks = cardRanks.map(rank => {
