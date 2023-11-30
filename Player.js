@@ -7,14 +7,22 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    console.log('gamestate Sala1: ', gameState);
+    try {
+      console.log('gamestate Sala1: ', gameState);
 
-    let amount = 0;
-    if (isPreFlop(gameState)) {
-      amount = handlePreflop(gameState);
+      let amount = 0;
+      console.log('checking if is preflop');
+      if (isPreFlop(gameState)) {
+        console.log('checked preflop');
+        amount = handlePreflop(gameState);
+      }
+
+      console.log('made to bet call');
+      bet(amount || 0);
+    } catch (e) {
+      console.log('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX');
+      bet(0);
     }
-
-    bet(amount || 0);
   }
 
   static showdown(gameState) {
