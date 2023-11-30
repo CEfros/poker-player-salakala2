@@ -1,4 +1,4 @@
-export function isPreFlop(gameState) {
+function isPreFlop(gameState) {
   if (!gameState.community_cards) {
     return true;
   }
@@ -6,3 +6,6 @@ export function isPreFlop(gameState) {
   return gameState.community_cards.length === 0;
 }
 
+module.exports = {
+  isPreFlop,
+}

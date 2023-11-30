@@ -7,11 +7,15 @@ export function isPairCards(gameState) {
     return player.hole_cards[0] === player.hole_cards[1];
 }
 
-export function handlePreflop (gameState) {
+function handlePreflop (gameState) {
   const player = getPlayer(gameState);
   console.log('player', player);
 
   if (isPairCards(gameState)) {
     return player.stack;
   }
+}
+
+module.exports = {
+  handlePreflop,
 }
