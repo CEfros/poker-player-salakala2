@@ -3,7 +3,7 @@ const { isPreFlop } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return '0.3';
+    return 'v.1.0.0';
   }
 
   static betRequest(gameState, bet) {
