@@ -7,7 +7,7 @@ const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return 'ERROR: Unreachable';
+    return 'ERROR: Unreachable001';
   }
 
   static betRequest(gameState, bet) {
@@ -18,8 +18,7 @@ class Player {
 
       if (
         isPreFlop(gameState) &&
-        !IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1]) ||
-        !IsNeutralHand.isNeutralHand(player.hole_cards[0], player.hole_cards[1])
+        !IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])
       ) {
         bet(0);
         return;

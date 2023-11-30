@@ -27,10 +27,6 @@ function handlePreflop (gameState) {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
 
-  if (!isBetHigherInSBs(gameState, 6) && IsNeutralHand.IsNeutralHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in;
-  }
-
   return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
 }
 
