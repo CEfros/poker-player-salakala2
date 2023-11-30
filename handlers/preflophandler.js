@@ -19,6 +19,12 @@ function handlePreflop (gameState) {
   console.log('gameState.small_blind', gameState.small_blind);
 
   if (isPairCards(gameState)) {
+    const fakeCall = Math.random() > 0.5;
+
+    if (fakeCall) {
+      return gameState.current_buy_in;
+    }
+
     return player.stack;
   } else {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
