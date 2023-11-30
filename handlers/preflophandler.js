@@ -14,6 +14,9 @@ function hasAceInHand(gameState) {
 function handlePreflop (gameState) {
   const player = getPlayer(gameState);
   console.log('player', player);
+  console.log('gameState.current_buy_in', gameState.current_buy_in);
+  console.log('gameState.players[gameState.in_action][gameState.bet]', gameState.players[gameState.in_action][gameState.bet]);
+  console.log('gameState.small_blind', gameState.small_blind);
 
   if (isPairCards(gameState)) {
     return player.stack;
