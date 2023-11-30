@@ -23,19 +23,7 @@ function handlePreflop (gameState) {
     return player.stack;
   }
 
-  if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
-  }
-
-  return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
-}
-
-function isBetHigherInSBs(gameState, smallBlinds) {
-  if (gameState.current_buy_in > gameState.small_blind * smallBlinds) {
-    return true;
-  }
-
-  return false;
+  return gameState.current_buy_in;
 }
 
 module.exports = {
