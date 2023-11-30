@@ -36,6 +36,12 @@ class Player {
         amount = handleFlop(gameState);
       }
 
+      // if bet is not a number, just check
+      if (isNaN(amount)) {
+        console.log('amount was nan');
+        amount = 0;
+      }
+
       console.log('made to bet call: ', amount);
 
       console.timeEnd('TIMER: whole resptime');

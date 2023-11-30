@@ -17,13 +17,13 @@ function handlePreflop (gameState) {
     const fakeCall = Math.random() > 0.5;
 
     if (fakeCall) {
-      return gameState.current_buy_in;
+      return gameState.current_buy_in - player.bet;
     }
 
     return player.stack;
   }
 
-  return gameState.current_buy_in;
+  return gameState.current_buy_in - player.bet;
 }
 
 module.exports = {
