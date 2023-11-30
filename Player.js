@@ -4,7 +4,6 @@ const IsNeutralHand = require('./handlers/IsConnectedHand');
 
 const { handleFlop } = require('./handlers/flophandler');
 const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
-const timers = require("timers");
 
 class Player {
   static get VERSION() {
