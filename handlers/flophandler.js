@@ -5,11 +5,8 @@ const {
   hasStraight,
   hasFlush,
   hasFourOfAKind,
+  hasFullHouse,
 } = require('../helpers/hand-analyser');
-
-function hasFullHouse(holeCards) {
-    return hasPair(holeCards) && hasTriple(holeCards);
-}
 
 function getAllCards(gameState) {
   const player = getPlayer(gameState);
@@ -39,7 +36,12 @@ function handleFlop (gameState) {
     return doBet(8, player, gameState);
   } else if (hasTriple(allCards)) {
     return doBet(10, player, gameState);
-  } else if (hasStraight(allCards) || hasFlush(allCards) || hasFourOfAKind(allCards)) {
+  } else if (
+    hasStraight(allCards) ||
+    hasFlush(allCards) ||
+    hasFourOfAKind(allCards) ||
+    hasFullHouse(allCards)
+  ) {
     return doBet(12, player, gameState);
   }
 
