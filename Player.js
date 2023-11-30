@@ -5,6 +5,7 @@ class Player {
 
   static betRequest(gameState, bet) {
     console.log('gamestate Sala1: ', gameState);
+    console,log('hello world');
 
     let amount = 0;
     if (isPreFlop(gameState)) {
