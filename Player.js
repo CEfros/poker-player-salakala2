@@ -4,6 +4,7 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
+    console.log('gamestate Sala1: ', gameState);
     bet(0);
   }
 
