@@ -32,6 +32,11 @@ class Player {
 
       console.log('made to bet call: ', amount);
 
+      // check if amount is not a number
+      if (isNaN(amount)) {
+        amount = 0;
+      }
+
       bet(amount || 0);
     } catch (e) {
       console.trace('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX', e);
