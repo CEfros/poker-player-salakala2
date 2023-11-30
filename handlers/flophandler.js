@@ -9,9 +9,7 @@ const {
   hasStrongestPair,
 } = require('../helpers/hand-analyser');
 
-function getAllCards(gameState) {
-  const player = getPlayer(gameState);
-
+function getAllCards(gameState, player) {
   return [
     ...player.hole_cards,
     ...gameState.community_cards,
@@ -23,8 +21,8 @@ function getPlayer(gameState) {
 }
 
 function handleFlop (gameState) {
-  const allCards = getAllCards(gameState);
   const player = getPlayer(gameState);
+  const allCards = getAllCards(gameState, player);
 
   // continuation bet
   if (gameState.current_buy_in === 0) {
@@ -33,15 +31,25 @@ function handleFlop (gameState) {
 
   if (hasStrongestPair(player.hole_cards, gameState.community_cards)) {
     return doBet(4, player, gameState);
-  } else if (hasPair(allCards) && !isBetHigherInSBs(gameState, 5)) {
+  }
+
+  if (hasPair(allCards) && !isBetHigherInSBs(gameState, 5)) {
     return doBet(3, player, gameState);
-  } else if (hasPair(allCards)) {
+  }
+
+  if (hasPair(allCards)) {
     return doBet(4, player, gameState);
-  } else if (hasTwoPair(allCards)) {
+  }
+
+  if (hasTwoPair(allCards)) {
     return doBet(6, player, gameState);
-  } else if (hasTriple(allCards)) {
+  }
+
+  if (hasTriple(allCards)) {
     return doBet(8, player, gameState);
-  } else if (
+  }
+
+  if (
     hasStraight(allCards) ||
     hasFlush(allCards) ||
     hasFourOfAKind(allCards) ||

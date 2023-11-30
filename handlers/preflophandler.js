@@ -12,7 +12,6 @@ function isPairCards(gameState) {
 
 function handlePreflop (gameState) {
   const player = getPlayer(gameState);
-  console.log('player', player);
 
   if (isPairCards(gameState)) {
     const fakeCall = Math.random() > 0.5;
@@ -29,6 +28,8 @@ function handlePreflop (gameState) {
   }  else {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
+
+  return 0;
 }
 
 function isBetHigherInSBs(gameState, smallBlinds) {
