@@ -28,7 +28,7 @@ function handleFlop (gameState) {
   const allCards = getAllCards(gameState);
   const player = getPlayer(gameState);
 
-  // continuatio bet
+  // continuation bet
   if (gameState.current_buy_in === 0) {
     return doBet(4, player);
   }

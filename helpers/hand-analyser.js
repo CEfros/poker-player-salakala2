@@ -10,6 +10,7 @@ function hasPair(holeCards) {
     // Check for pairs
     for (const count of Object.values(rankCounts)) {
         if (count === 2) {
+            console.log('we have a pair!');
             return true;
         }
     }
@@ -30,7 +31,11 @@ function hasTwoPair(holeCards) {
 
     // Check for two pairs
     const pairCount = Object.values(rankCounts).filter(count => count === 2).length;
-    return pairCount === 2;
+    if (pairCount === 2) {
+      console.log('we have two pairs!');
+      return true;
+    }
+    return false;
 }
 
 function hasTriple(holeCards) {
@@ -47,6 +52,7 @@ function hasTriple(holeCards) {
     // Check for triples
     for (const count of Object.values(rankCounts)) {
         if (count === 3) {
+            console.log('we have a triple!');
             return true;
         }
     }
@@ -76,6 +82,8 @@ function hasStraight(holeCards) {
             return false;
         }
     }
+    console.log('we have a straight!');
+    return true;
 }
 
 function hasFourOfAKind(holeCards) {

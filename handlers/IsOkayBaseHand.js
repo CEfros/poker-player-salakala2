@@ -47,6 +47,7 @@ class IsOkayBaseHand {
           (card1.rank === this.sameSuit[i][0] && card2.rank === this.sameSuit[i][1]) ||
           (card1.rank === this.sameSuit[i][1] && card2.rank === this.sameSuit[i][0])
         ) {
+          console.log('same suited cards in hand');
           return true;
         }
       }
