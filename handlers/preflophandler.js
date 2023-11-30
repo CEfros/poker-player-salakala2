@@ -1,6 +1,3 @@
-const IsOkayHand = require('./IsConnectedHand');
-const IsNeutralHand = require('./IsConnectedHand');
-
 function getPlayer(gameState) {
   return gameState.players.find(el => el.hole_cards);
 }
@@ -22,21 +19,12 @@ function handlePreflop (gameState) {
     }
 
     return player.stack;
-  } else if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in;
-  } else if (!isBetHigherInSBs(gameState, 6) && IsNeutralHand.IsNeutralHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in;
-  }  else {
+  } else {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
-}
 
-function isBetHigherInSBs(gameState, smallBlinds) {
-  if (gameState.current_buy_in > gameState.small_blind * smallBlinds) {
-    return true;
-  }
-
-  return false;
+  console.log('default preflop bet');
+  return 0;
 }
 
 module.exports = {
