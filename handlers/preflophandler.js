@@ -23,6 +23,9 @@ function handlePreflop (gameState) {
   } else if (hasAceInHand(gameState)) {
     return gameState.current_buy_in - player.bet + (gameState.small_blind * 6);
   }
+
+  console.log('default preflop bet');
+  return 0;
 }
 
 module.exports = {
