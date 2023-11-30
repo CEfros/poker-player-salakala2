@@ -7,13 +7,20 @@ function isPairCards(gameState) {
     return player.hole_cards[0] === player.hole_cards[1];
 }
 
+function hasAceInHand(gameState) {
+  return gameState.community_cards.some(el => el.rank === 'A');
+}
+
 function handlePreflop (gameState) {
   const player = getPlayer(gameState);
   console.log('player', player);
 
   if (isPairCards(gameState)) {
     return player.stack;
+  } else if (hasAceInHand(gameState)) {
+    return gameState.current_buy_in - gameState.players[in_action][bet] + (gameState.small_blind * 4);
   }
+
 }
 
 module.exports = {

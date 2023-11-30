@@ -1,17 +1,17 @@
-const handlePreflop = require('./handlers/preflophandler');
-const isPreFlop = require('./helpers/bet-request');
+const { handlePreflop } = require('./handlers/preflophandler');
+const { isPreFlop } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return '0.1';
+    return '0.2';
   }
 
   static betRequest(gameState, bet) {
     console.log('gamestate Sala1: ', gameState);
 
     let amount = 0;
-    if (isPreFlop.isPreFlop(gameState)) {
-      amount = handlePreflop.handlePreflop(gameState);
+    if (isPreFlop(gameState)) {
+      amount = handlePreflop(gameState);
     }
 
     bet(amount || 0);
