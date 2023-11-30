@@ -6,12 +6,21 @@ const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return 'v.1.2.4';
+    return 'v.1.3.0';
   }
 
   static betRequest(gameState, bet) {
     try {
       console.log('gamestate Sala1: ', gameState);
+
+
+
+      const player = getPlayer(gameState);
+      if (!IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
+        console.log('checking or folding for non good hand');
+        bet(0);
+        return;
+      }
 
       let amount = 0;
       console.log('checking if is preflop');
@@ -28,14 +37,6 @@ class Player {
       } else if (isRiver(gameState)) {
         amount = handleFlop(gameState);
       }
-
-      const player = getPlayer(gameState);
-      if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
-        console.log('all in for okay hand');
-        amount = player.stack;
-        console.log('all in for okay hand no failure');
-      }
-
 
       // check if amount is not a number
       if (isNaN(amount)) {
