@@ -22,9 +22,9 @@ class Player {
         amount = handleFlop(gameState);
       }
 
-      if (IsOkayHand.isOkayHand(gameState.hole_cards[0], gameState.hole_cards[1])) {
+      const player = getPlayer(gameState);
+      if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
         console.log('all in for okay hand');
-        const player = getPlayer(gameState);
         amount = player.stack;
         console.log('all in for okay hand no failure');
       }
