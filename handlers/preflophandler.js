@@ -21,15 +21,17 @@ function handlePreflop (gameState) {
     }
 
     return player.stack;
-  } else if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in;
-  } else if (!isBetHigherInSBs(gameState, 6) && IsNeutralHand.IsNeutralHand(player.hole_cards[0], player.hole_cards[1])) {
-    return gameState.current_buy_in;
-  }  else {
-    return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
 
-  return 0;
+  if (IsOkayHand.isOkayHand(player.hole_cards[0], player.hole_cards[1])) {
+    return gameState.current_buy_in;
+  }
+
+  if (!isBetHigherInSBs(gameState, 6) && IsNeutralHand.IsNeutralHand(player.hole_cards[0], player.hole_cards[1])) {
+    return gameState.current_buy_in;
+  }
+
+  return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
 }
 
 function isBetHigherInSBs(gameState, smallBlinds) {
