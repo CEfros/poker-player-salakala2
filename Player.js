@@ -6,7 +6,7 @@ const { isPreFlop, isFlop } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return 'v.1.2.0';
+    return 'v.1.2.2';
   }
 
   static betRequest(gameState, bet) {
@@ -18,9 +18,11 @@ class Player {
       if (isPreFlop(gameState)) {
         console.log('checked preflop');
         amount = handlePreflop(gameState);
+        console.log('checked preflop success, amount:', amount);
       } else if (isFlop(gameState)) {
         console.log('check flop');
         amount = handleFlop(gameState);
+        console.log('checked flop success, amount:', amount);
       }
 
       const player = getPlayer(gameState);
