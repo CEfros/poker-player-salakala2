@@ -6,7 +6,7 @@ const { isPreFlop, isFlop, isTurn, isRiver } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return 'v.1.6.1';
+    return 'v.1.6.2';
   }
 
   static betRequest(gameState, bet) {
