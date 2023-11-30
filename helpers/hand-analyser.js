@@ -78,9 +78,43 @@ function hasStraight(holeCards) {
     }
 }
 
+function hasFourOfAKind(holeCards) {
+    const cardRanks = holeCards.map(card => card.rank);
+
+    // Count the occurrences of each rank
+    const rankCounts = {};
+    for (const rank of cardRanks) {
+        rankCounts[rank] = (rankCounts[rank] || 0) + 1;
+    }
+
+    // Check for a four of a kind
+    return Object.values(rankCounts).some(count => count >= 4);
+}
+
+function hasFlush(holeCards) {
+    const cardSuits = holeCards.map(card => card.suit);
+
+    // Count the occurrences of each suit
+    const suitCounts = {};
+    for (const suit of cardSuits) {
+        suitCounts[suit] = (suitCounts[suit] || 0) + 1;
+    }
+
+    // Check for a flush (all cards having the same suit)
+    return Object.values(suitCounts).some(count => count >= 5);
+}
+
+function hasFullHouse(holeCards) {
+    return hasPair(holeCards) && hasTriple(holeCards);
+}
+
 module.exports = {
   hasPair,
   hasTriple,
   hasTwoPair,
   hasStraight,
+  hasFourOfAKind,
+  hasFlush,
+  hasFourOfAKind,
+  hasFullHouse,
 };
