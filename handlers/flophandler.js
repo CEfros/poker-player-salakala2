@@ -34,20 +34,20 @@ function handleFlop (gameState) {
   }
 
   if (hasPair(allCards)) {
-    return doBet(6, player);
+    return doBet(6, player, gameState);
   } else if (hasTwoPair(allCards)) {
-    return doBet(8, player);
+    return doBet(8, player, gameState);
   } else if (hasTriple(allCards)) {
-    return doBet(10, player);
+    return doBet(10, player, gameState);
   } else if (hasStraight(allCards) || hasFlush(allCards) || hasFourOfAKind(allCards)) {
-    return doBet(12, player);
+    return doBet(12, player, gameState);
   }
 
   return 0;
 }
 
 
-function doBet(smallBlindCount = 8, player) {
+function doBet(smallBlindCount = 8, player, gameState) {
   return gameState.current_buy_in - player.bet + (gameState.small_blind * smallBlindCount);
 }
 
