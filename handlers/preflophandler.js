@@ -22,7 +22,6 @@ function handlePreflop (gameState) {
   } else {
     return gameState.current_buy_in - gameState.players[gameState.in_action][gameState.bet] + (gameState.small_blind * 4);
   }
-
 }
 
 module.exports = {

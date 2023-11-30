@@ -1,10 +1,12 @@
 const { handlePreflop, getPlayer } = require('./handlers/preflophandler');
-const { isPreFlop } = require('./helpers/bet-request');
 const IsOkayHand = require('./handlers/IsOkayBaseHand');
+
+const { handleFlop } = require('./handlers/flophandler');
+const { isPreFlop, isFlop } = require('./helpers/bet-request');
 
 class Player {
   static get VERSION() {
-    return 'v.1.1.0';
+    return 'v.1.2.0';
   }
 
   static betRequest(gameState, bet) {
@@ -16,6 +18,8 @@ class Player {
       if (isPreFlop(gameState)) {
         console.log('checked preflop');
         amount = handlePreflop(gameState);
+      } else if (isFlop(gameState)) {
+        amount = handleFlop(gameState);
       }
 
       if (IsOkayHand.isOkayHand(gameState.hole_cards[0], gameState.hole_cards[1])) {
@@ -25,7 +29,8 @@ class Player {
         console.log('all in for okay hand no failure');
       }
 
-      console.log('made to bet call');
+      console.log('made to bet call: ', amount);
+
       bet(amount || 0);
     } catch (e) {
       console.trace('XXXXXXXXXXXXXXXXXXXX EVERYTHING BROKETH!!!! FIX ASAP!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXX', e);
