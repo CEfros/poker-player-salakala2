@@ -7,16 +7,9 @@ function isPairCards(gameState) {
     return player.hole_cards[0].rank === player.hole_cards[1].rank;
 }
 
-function hasAceInHand(gameState) {
-  return gameState.community_cards.some(el => el.rank === 'A');
-}
-
 function handlePreflop (gameState) {
   const player = getPlayer(gameState);
   console.log('player', player);
-  console.log('gameState.current_buy_in', gameState.current_buy_in);
-  console.log('player bet', player.bet);
-  console.log('gameState.small_blind', gameState.small_blind);
 
   if (isPairCards(gameState)) {
     const fakeCall = Math.random() > 0.5;
