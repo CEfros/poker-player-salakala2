@@ -20,22 +20,23 @@ function getPlayer(gameState) {
 
 function handleFlop (gameState) {
   const allCards = getAllCards(gameState);
+  const player = getPlayer(gameState);
 
   if (hasPair(allCards)) {
-    return doBet(6);
+    return doBet(6, player);
   } else if (hasTwoPair(allCards)) {
-    return doBet(8);
+    return doBet(8, player);
   } else if (hasTriple(allCards)) {
-    return doBet(10);
+    return doBet(10, player);
   } else if (hasStraight) {
-    return doBet(12);
+    return doBet(12, player);
   }
 
   return 0;
 }
 
-function doBet(smallBlindCount = 8) {
-  return gameState.current_buy_in - gameState.players[gameState.in_action][gameState.bet] + (gameState.small_blind * smallBlindCount);
+function doBet(smallBlindCount = 8, player) {
+  return gameState.current_buy_in - player.bet + (gameState.small_blind * smallBlindCount);
 }
 
 module.exports = {

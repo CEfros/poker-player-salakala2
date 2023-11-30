@@ -15,15 +15,16 @@ function handlePreflop (gameState) {
   const player = getPlayer(gameState);
   console.log('player', player);
   console.log('gameState.current_buy_in', gameState.current_buy_in);
-  console.log('gameState.players[gameState.in_action][gameState.bet]', gameState.players[gameState.in_action][gameState.bet]);
+  console.log('player bet', player.bet);
   console.log('gameState.small_blind', gameState.small_blind);
 
   if (isPairCards(gameState)) {
     return player.stack;
   } else if (hasAceInHand(gameState)) {
-    return gameState.current_buy_in - gameState.players[gameState.in_action][gameState.bet] + (gameState.small_blind * 6);
+    return gameState.current_buy_in - player.bet + (gameState.small_blind * 6);
+
   } else {
-    return gameState.current_buy_in - gameState.players[gameState.in_action][gameState.bet] + (gameState.small_blind * 4);
+    return gameState.current_buy_in - player.bet + (gameState.small_blind * 4);
   }
 }
 
